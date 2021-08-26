@@ -59,7 +59,7 @@ def main():
 
         try:
             response = add_to_mc(client, fname, lname, email, subscriber_hash)
-            print("Success:", response['id'], subscriber_hash, "is", response['status'])
+            print("Success:", response['id'], "is", response['status'])
         except ApiClientError as error:
             print("Error: {}".format(error.text))
 
