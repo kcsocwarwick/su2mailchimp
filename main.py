@@ -55,11 +55,11 @@ def main():
         email = person.find('EmailAddress').text
         subscriber_hash = hashlib.md5(email.lower().encode('utf-8')).hexdigest()
 
-        print("Adding", fname, lname, email, "to mailchimp")
+        print("Adding", fname[0], lname[0], subscriber_hash, "to mailchimp")
 
         try:
             response = add_to_mc(client, fname, lname, email, subscriber_hash)
-            print("Success:", response['id'], response['email_address'], "is", response['status'])
+            print("Success:", response['id'], subscriber_hash, "is", response['status'])
         except ApiClientError as error:
             print("Error: {}".format(error.text))
 
